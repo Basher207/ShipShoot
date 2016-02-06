@@ -52,5 +52,4 @@ class AkhilsShip extends Charchter {
   void EnemyNearBy (float x, float y) {
     
   }
-
 }

@@ -16,10 +16,20 @@ class BasharsShip extends Charchter {
   }
   void Render () {
     imageMode (CENTER);
-    image (myShip, xPos, yPos, 100, 100);
+    
+    pushMatrix ();
+    
+    translate (xPos, yPos);
+    if (velocity.x < 0)
+      scale (-1, 1);
+    image (myShip, 0, 0, 100, 100);
+    
+    popMatrix ();
   }
   void Move () {
-    PVector idealVelocity = PVector.sub (new PVector(mouseX,mouseY), new PVector (xPos,yPos));
+    PVector runAwayFromPosition = PositionOfClosestEnemy ();
+    
+    PVector idealVelocity = PVector.sub (new PVector (xPos,yPos), runAwayFromPosition);
     idealVelocity.setMag (idealSpeed);
     
     PVector acl = PVector.sub (idealVelocity, velocity);
@@ -29,7 +39,27 @@ class BasharsShip extends Charchter {
     xPos += velocity.x;
     yPos += velocity.y;
   }
+  PVector PositionOfClosestEnemy () {
+    PVector closestTarget = null;
+    float closestDistance = Float.POSITIVE_INFINITY;
+    
+    for (int i = 0; i < charchters.size (); i++) {
+      Charchter charchter = charchters.get (i);
+      if (charchter == this)
+        continue;
+      PVector charchterPosition = charchter.GetVectorPosition ();
+      float distance =PVector.dist (charchterPosition, new PVector (xPos, yPos));
+      if (distance < closestDistance) {
+        closestTarget = charchterPosition;
+        closestDistance = distance;
+      }
+    }
+    return closestTarget;
+  }
   void EnemyNearBy (float x, float y) {
     
   }
+}
+void mousePressed () {
+  charchters.add (new BasharsShip (mouseX + random (-5,5), mouseY + random (-5,5))); 
 }

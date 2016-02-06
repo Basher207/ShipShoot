@@ -2,7 +2,7 @@ ArrayList <Charchter> charchters;
 GameManager manager;
 
 void setup () {
-  size (600,600, P3D);
+  size (600,600, P2D);
   charchters = new ArrayList<Charchter> ();
   manager = new GameManager ();
 }
@@ -24,7 +24,9 @@ class GameManager {
   }
   void Move () {
     for (int i = charchters.size() - 1; i >= 0; i--) {
-      charchters.get(i).Move ();
+      Charchter charchter = charchters.get (i);
+      charchter.Move ();
+      CheckIfInside (charchter);
     }
   }
   void Render () {
@@ -32,5 +34,16 @@ class GameManager {
     for (int i = charchters.size() - 1; i >= 0; i--) {
       charchters.get(i).Render();
     }
+  }
+  void CheckIfInside (Charchter charchter) {
+    if (charchter.xPos > width)
+      charchter.xPos -= width;
+    if (charchter.xPos < 0)
+      charchter.xPos += width;
+      
+    if (charchter.yPos > height)
+      charchter.yPos -= height;
+    if (charchter.xPos < 0)
+      charchter.yPos += height;
   }
 }  
