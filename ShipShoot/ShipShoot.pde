@@ -43,7 +43,7 @@ class GameManager {
       
     if (charchter.yPos > height)
       charchter.yPos -= height;
-    if (charchter.xPos < 0)
+    if (charchter.yPos < 0)
       charchter.yPos += height;
   }
 }  
