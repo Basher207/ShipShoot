@@ -17,6 +17,7 @@ class GameManager {
     characters.add (new AkhilsShip  (width - width / 3, height / 3));
     characters.add (new BeckysShip  (width / 3        , height - height / 3));
     characters.add (new BilalsShip  (width - width / 3, height - height / 3));
+    characters.add (new BensShip    (width / 2, height / 2));
   }
   void Update () {
     Render ();
