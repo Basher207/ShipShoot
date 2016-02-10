@@ -1,4 +1,4 @@
-class BeckysShip extends Charchter {
+class BeckysShip extends Character {
   BeckysShip (float xPos, float yPos) {
     super (100, xPos, yPos);
   }
@@ -6,9 +6,9 @@ class BeckysShip extends Charchter {
     ellipse (xPos, yPos, 10, 10);
   }
   void Move () {
-    
+
   }
   void EnemyNearBy (float x, float y) {
-    
+
   }
 }

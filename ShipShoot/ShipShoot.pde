@@ -1,9 +1,9 @@
-ArrayList <Charchter> charchters;
+ArrayList <Character> characters;
 GameManager manager;
 
 void setup () {
   size (600,600, P2D);
-  charchters = new ArrayList<Charchter> ();
+  characters = new ArrayList<Character> ();
   manager = new GameManager ();
 }
 void draw () {
@@ -12,38 +12,38 @@ void draw () {
 
 class GameManager {
   GameManager () {
-    charchters = new ArrayList<Charchter> ();
-    charchters.add (new BasharsShip (width / 3        , height / 3));
-    charchters.add (new AkhilsShip  (width - width / 3, height / 3));
-    charchters.add (new BeckysShip  (width / 3        , height - height / 3));
-    charchters.add (new BilalsShip  (width - width / 3, height - height / 3));
+    characters = new ArrayList<Character> ();
+    characters.add (new BasharsShip (width / 3        , height / 3));
+    characters.add (new AkhilsShip  (width - width / 3, height / 3));
+    characters.add (new BeckysShip  (width / 3        , height - height / 3));
+    characters.add (new BilalsShip  (width - width / 3, height - height / 3));
   }
   void Update () {
     Render ();
     Move   ();
   }
   void Move () {
-    for (int i = charchters.size() - 1; i >= 0; i--) {
-      Charchter charchter = charchters.get (i);
-      charchter.Move ();
-      CheckIfInside (charchter);
+    for (int i = characters.size() - 1; i >= 0; i--) {
+      Character Character = characters.get (i);
+      Character.Move ();
+      CheckIfInside (Character);
     }
   }
   void Render () {
     background (255);
-    for (int i = charchters.size() - 1; i >= 0; i--) {
-      charchters.get(i).Render();
+    for (int i = characters.size() - 1; i >= 0; i--) {
+      characters.get(i).Render();
     }
   }
-  void CheckIfInside (Charchter charchter) {
-    if (charchter.xPos > width)
-      charchter.xPos -= width;
-    if (charchter.xPos < 0)
-      charchter.xPos += width;
-      
-    if (charchter.yPos > height)
-      charchter.yPos -= height;
-    if (charchter.yPos < 0)
-      charchter.yPos += height;
+  void CheckIfInside (Character Character) {
+    if (Character.xPos > width)
+      Character.xPos -= width;
+    if (Character.xPos < 0)
+      Character.xPos += width;
+
+    if (Character.yPos > height)
+      Character.yPos -= height;
+    if (Character.yPos < 0)
+      Character.yPos += height;
   }
-}  
+}
