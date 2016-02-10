@@ -1,12 +1,10 @@
 class BensShip extends Character {
     PImage ship;
     PVector velocity;
-    color c;
 
     BensShip(float xPos, float yPos) {
         super(100, xPos, yPos);
         velocity = new PVector(-1, 1);
-        c = color(255, 255, 255);
         ship = loadImage("BensShip.png");
     }
 
@@ -20,11 +18,18 @@ class BensShip extends Character {
         if (velocity.x > 0)
             scale (-1, 1);
 
-        tint(c);
+        tint(GenerateColor(xPos, yPos));
         image (ship, 0, 0, 294/2, 144/2);
         noTint();
 
         popMatrix ();
+    }
+
+    color GenerateColor(float x, float y) {
+        float r = sin((millis() + x * y)/10000.0) * 255;
+        float g = cos((millis() + x * y)/10000.0) * 255;
+        float b = tan((millis() + x * y)/10000.0) * 255;
+        return color(r, g, b);
     }
 
     void Move() {
