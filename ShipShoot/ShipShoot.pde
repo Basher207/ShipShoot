@@ -42,15 +42,16 @@ class GameManager {
   }
   //Forces the Character to be inside of the ship.
   void CheckIfInside (Character character) {
-    if (character.xPos > width)
-      character.xPos -= width;
+    float border = 100;
+    if (character.xPos > width + border)
+      character.xPos -= width + border;
     if (character.xPos < 0)
-      character.xPos += width;
+      character.xPos += width + border;
 
-    if (character.yPos > height)
-      character.yPos -= height;
+    if (character.yPos > height + border)
+      character.yPos -= height + border;
     if (character.yPos < 0)
-      character.yPos += height;
+      character.yPos += height + border;
   }
 }
 
