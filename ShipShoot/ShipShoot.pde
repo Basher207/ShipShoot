@@ -35,7 +35,8 @@ class GameManager {
   }
   //Calls Render() on all the Characters
   void Render () {
-    background (255);
+    fill(50, 80, 200, 20);
+    rect (0, 0, width, height);
     for (int i = characters.size() - 1; i >= 0; i--) {
       characters.get(i).Render();
     }
