@@ -1,20 +1,23 @@
 abstract class Character {
-  float maxHealth;
 
+  //Position of the Character
   float xPos, yPos;
-
-  float health;
+  
+  //Constructor, takes in the xPosition and the yPosition of the Character
+  
   Character (float maxHealth, float xPos, float yPos) {
-    this.maxHealth = maxHealth;
     this.xPos = xPos;
     this.yPos = yPos;
   }
+  //Returns the position of the Character as a PVector
   PVector GetVectorPosition () {
    return new PVector (xPos, yPos);
   }
-  abstract void Render ();
+  //Move is first called to recalculate all the ships movements
   abstract void Move ();
-  abstract void EnemyNearBy (float x, float y);
+  //Than Render is called, to render all the ships in there new positions
+  abstract void Render ();
+  //Returns the Character that is closest to this character, that isn't this Character
   
   Character PositionOfClosestEnemy () {
     Character closestTarget = null;
