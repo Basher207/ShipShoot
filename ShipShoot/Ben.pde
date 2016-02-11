@@ -4,7 +4,7 @@ class BensShip extends Character {
 
     BensShip(float xPos, float yPos) {
         super(100, xPos, yPos);
-        velocity = new PVector(-1, 1);
+        velocity = new PVector(0, 0);
         ship = loadImage("BensShip.png");
     }
 
@@ -15,17 +15,20 @@ class BensShip extends Character {
 
         translate (xPos, yPos);
 
+        // make the image face it's direction of movement
         if (velocity.x > 0)
             scale (-1, 1);
 
+        // tint the image with a colour generated using its position
         tint(GenerateColor(xPos, yPos));
-        image (ship, 0, 0, 294/2, 144/2);
+        image (ship, 0, 0, ship.width/2, ship.height/2);
         noTint();
 
         popMatrix ();
     }
 
     color GenerateColor(float x, float y) {
+        // generate a colour based on some inputs and current time
         float r = sin((millis() + x * y)/10000.0) * 255;
         float g = cos((millis() + x * y)/10000.0) * 255;
         float b = tan((millis() + x * y)/10000.0) * 255;
@@ -33,6 +36,8 @@ class BensShip extends Character {
     }
 
     void Move() {
+        // moves the object in a very slow waving pattern;
+        // causes random-looking smooth movement
         velocity.x = cos(millis()/10000.0) * 2;
         velocity.y = sin(millis()/10000.0) * 2;
 
