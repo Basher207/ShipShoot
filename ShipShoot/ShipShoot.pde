@@ -53,3 +53,28 @@ class GameManager {
       character.yPos += height;
   }
 }
+
+void mousePressed () {
+    // pick a ship to place pseudo-randomly
+    switch (millis() % 5) {
+        case 0: {
+            characters.add (new BasharsShip (mouseX + random (-5,5), mouseY + random (-5,5)));
+        } break;
+
+        case 1: {
+            characters.add (new AkhilsShip (mouseX + random (-5,5), mouseY + random (-5,5)));
+        } break;
+
+        case 2: {
+            characters.add (new BeckysShip (mouseX + random (-5,5), mouseY + random (-5,5)));
+        } break;
+
+        case 3: {
+            characters.add (new BilalsShip (mouseX + random (-5,5), mouseY + random (-5,5)));
+        } break;
+
+        case 4: {
+            characters.add (new BensShip (mouseX + random (-5,5), mouseY + random (-5,5)));
+        } break;
+    }
+}

@@ -1,14 +1,14 @@
 class BasharsShip extends Character {
   //The Image of the ship
-  PImage myShip; 
+  PImage myShip;
   //The velocity of the ship
   PVector velocity;
-  
+
   //The ideal target speed that the ship will seek
   float idealSpeed;
   //The maximum acceleration of the ship
   float maxAcl;
-  
+
   //The constructor, takes in the xPosition, yPosition of the ship
   BasharsShip (float xPos, float yPos) {
     super (100, xPos, yPos);
@@ -18,7 +18,7 @@ class BasharsShip extends Character {
     velocity = new PVector();
     myShip = loadImage ("BasharsShip.png");
   }
-  //Renders the ship into the correct position, and uses Matrixes to scale the xAxis 
+  //Renders the ship into the correct position, and uses Matrixes to scale the xAxis
   //to make the ship turn to the right direction
   void Render () {
     imageMode (CENTER);
@@ -45,7 +45,4 @@ class BasharsShip extends Character {
     xPos += velocity.x;
     yPos += velocity.y;
   }
-}
-void mousePressed () {
-  characters.add (new BasharsShip (mouseX + random (-5,5), mouseY + random (-5,5)));
 }
