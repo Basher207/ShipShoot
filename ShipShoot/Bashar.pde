@@ -13,8 +13,8 @@ class BasharsShip extends Character {
   BasharsShip (float xPos, float yPos) {
     super (100, xPos, yPos);
 
-    idealSpeed = 5;
-    maxAcl = 0.02;
+    idealSpeed = 7;
+    maxAcl = 0.06;
     velocity = new PVector();
     myShip = loadImage ("BasharsShip.png");
   }
@@ -30,6 +30,8 @@ class BasharsShip extends Character {
       image (myShip, 0, 0, 100, 100);
     popMatrix ();
   }
+  //Sets an ideal velocity vector, and accelerates towards it from current velocity vector
+  //Than adds velocity to position
   void Move () {
     Character runAwayFromPosition = PositionOfClosestEnemy ();
 
@@ -42,9 +44,6 @@ class BasharsShip extends Character {
     velocity.add (acl);
     xPos += velocity.x;
     yPos += velocity.y;
-  }
-  void EnemyNearBy (float x, float y) {
-
   }
 }
 void mousePressed () {
