@@ -2,7 +2,8 @@ ArrayList <Character> characters; //Contains a reference to all the Characters
 GameManager manager; //A GameManager instance
 
 void setup () {
-  size (600,600, P2D);
+  fullScreen(P2D);
+  // size (600,600, P2D);
   characters = new ArrayList<Character> ();
   manager = new GameManager ();
 }
