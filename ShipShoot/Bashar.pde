@@ -27,9 +27,9 @@ class BasharsShip extends Character {
     popMatrix ();
   }
   void Move () {
-    PVector runAwayFromPosition = PositionOfClosestEnemy ();
+    Character runAwayFromPosition = PositionOfClosestEnemy ();
 
-    PVector idealVelocity = PVector.sub (new PVector (xPos,yPos), runAwayFromPosition);
+    PVector idealVelocity = PVector.sub (new PVector (xPos,yPos), new PVector (runAwayFromPosition.xPos, runAwayFromPosition.yPos));
     idealVelocity.setMag (idealSpeed);
 
     PVector acl = PVector.sub (idealVelocity, velocity);
@@ -38,23 +38,6 @@ class BasharsShip extends Character {
     velocity.add (acl);
     xPos += velocity.x;
     yPos += velocity.y;
-  }
-  PVector PositionOfClosestEnemy () {
-    PVector closestTarget = null;
-    float closestDistance = Float.POSITIVE_INFINITY;
-
-    for (int i = 0; i < characters.size (); i++) {
-      Character Character = characters.get (i);
-      if (Character == this)
-        continue;
-      PVector CharacterPosition = Character.GetVectorPosition ();
-      float distance =PVector.dist (CharacterPosition, new PVector (xPos, yPos));
-      if (distance < closestDistance) {
-        closestTarget = CharacterPosition;
-        closestDistance = distance;
-      }
-    }
-    return closestTarget;
   }
   void EnemyNearBy (float x, float y) {
 
